@@ -7,12 +7,13 @@ it = item_list[0]
 
 
 def main():
+    store = Store(it)
+    shop = Shop({})
     while True:
-        store = Store(it)
-        shop = Shop({})
         print(f'На складе находится следующая продукция: {store.get_items()}')
         print(f'Свободных мест на складе: {store.get_free_space()}')
         print(f'Уникальных продуктов на складе: {store.get_unique_items_count()}')
+        print(f'В магазине хранится {shop.get_items()}')
 
         from_1 = "store"
         to = "shop"
@@ -26,7 +27,7 @@ def main():
         shop.get_free_space()
         shop.add(count=request.amount, product_name=request.product)
         print(f'На складе хранится {store.get_items()}')
-        print(f'В магазине хранится {shop.get_items()}')
+        # print(f'В магазине хранится {shop.get_items()}')
 
 
 main()

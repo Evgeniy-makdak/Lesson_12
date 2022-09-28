@@ -12,6 +12,8 @@ class Storage:
     def remove(self, product_name: str, count: int):
         if product_name in self.items and count <= self.items[product_name]:
             self.items[product_name] -= count
+        elif self.items[product_name] == 0:
+            self.items.pop(self.items[product_name])
             return True
 
     def get_free_space(self):
