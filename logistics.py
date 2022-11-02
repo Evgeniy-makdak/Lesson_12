@@ -10,10 +10,10 @@ class Storage:
             self.items[product_name] = count
 
     def remove(self, product_name: str, count: int):
-        if product_name in self.items and count <= self.items[product_name]:
-            self.items[product_name] -= count
-        elif self.items[product_name] == 0:
+        if self.items[product_name] == 0:
             self.items.pop(self.items[product_name])
+        elif product_name in self.items and count <= self.items[product_name]:
+            self.items[product_name] -= count
             return True
 
     def get_free_space(self):
@@ -32,8 +32,11 @@ class Store(Storage):
         super().__init__(items, capacity)
 
     def add(self, product_name: str, count: int):
-        if count <= self.get_free_space():
-            super().add(product_name, count)
+        if product_name in self.items:
+            if count <= self.get_free_space():
+                super().add(product_name, count)
+        else:
+            print("Нет такого товара")
 
 
 class Shop(Store):
